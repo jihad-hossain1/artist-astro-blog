@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths(){
+    const posts = await Astro.glob('../posts/*.md');
+    return posts?.map(post=>({
+        params: {
+            slug: post?.frontmatter.slug
+        },
+        props: {
+            post
+        }
+    }))
+}
+
+const {Content, frontmatter} = Astro.props.post
+---
+
+<Layout>
+   <section>
+   <div class="my-6">
+     <a href="/" class="bg-zinc-800 px-6 py-2 rounded-lg shadow text-zinc-50">
+    Go Back
+    </a>
+   </div>
+    <div class="flex flex-col gap-3">
+        <h4 class="text-2xl font-bold">
+            {frontmatter.title}
+        </h4>
+        <div>
+            Writen by <strong>
+                {frontmatter.author} on {new Date(frontmatter.date).toLocaleDateString()}
+            </strong>
+        </div>
+        <Content />
+    </div>
+</section>
+</Layout>
