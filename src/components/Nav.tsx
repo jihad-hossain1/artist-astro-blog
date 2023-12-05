@@ -38,8 +38,9 @@ const Nav = () => {
           <div className="flex gap-12 items-center">
             <a href="/">Home</a>
             <a href="/about">About</a>
-            <a href="/about">service</a>
-            <a href="/about">contact</a>
+            <a href="/service">service</a>
+            <a href="/contact">contact</a>
+            <a href="/blog">blog</a>
           </div>
         )}
         {/* check for mobile device  */}
@@ -75,6 +76,9 @@ const Nav = () => {
                 </motion.a>
                 <motion.a variants={itemMotion} href="/contact">
                   contact
+                </motion.a>
+                <motion.a variants={itemMotion} href="/blogs">
+                  Blogs
                 </motion.a>
               </motion.div>
             </motion.div>
